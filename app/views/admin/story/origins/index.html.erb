@@ -11,8 +11,8 @@
 
   <% @origins.each do |origin| %>
     <tr>
-      <td><%= origin.title %></td>
-      <td><%= truncate(origin.content, length: 100, separator: "...") %></td>
+      <td><%= link_to origin.title, admin_story_origin_path(origin) %></td>
+      <td><%= link_to truncate(origin.content, length: 100, separator: "..."), admin_story_origin_path(origin) %></td>
       <td><%= link_to origin.translations.count, admin_story_origin_translations_path(origin) %></td>
       <td><%= link_to origin.vocabularies.count, admin_story_origin_vocabularies_path(origin) %></td>
       <td>

@@ -9,8 +9,8 @@
 
   <% @vocabularies.each do |voca| %>
     <tr>
-      <td><%= voca.keyword %></td>
-      <td><%= truncate(voca.explain, length: 100, separator: "...") %></td>
+      <td><%= link_to voca.keyword, admin_story_origin_vocabulary_path(voca.story, voca) %></td>
+      <td><%= link_to truncate(voca.explain, length: 100, separator: "..."), admin_story_origin_vocabulary_path(voca.story, voca) %></td>
       <td>
 	<a class="" href="<%= edit_admin_story_origin_vocabulary_path(voca.story, voca) %>">
 	  <span class="glyphicon glyphicon-pencil"></span>Edit

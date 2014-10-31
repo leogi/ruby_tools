@@ -11,8 +11,8 @@
   <% @translations.each do |trans| %>
     <tr>
       <td><%= trans.language %></td>
-      <td><%= trans.title %></td>
-      <td><%= truncate(trans.content, length: 100, separator: "...") %></td>
+      <td><%= link_to trans.title, admin_story_origin_translation_path(trans.story, trans) %></td>
+      <td><%= link_to truncate(trans.content, length: 100, separator: "..."), admin_story_origin_translation_path(trans.story, trans) %></td>
       <td>
 	<a class="" href="<%= edit_admin_story_origin_translation_path(trans.story, trans) %>">
 	  <span class="glyphicon glyphicon-pencil"></span>Edit
