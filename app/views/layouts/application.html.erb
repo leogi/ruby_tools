@@ -19,14 +19,19 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Some Store</a>
+        <a class="brand" href="#">Learn foreign language everyday</a>
         <div class="nav-collapse">
           <ul class="nav">
- 			<% if current_user %>
-		      <li><%= link_to "Sign out", logout_path, id: "sign_out" %></li>
-		    <% else %>
-		     <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
-		    <% end %>
+ 	    <% if current_user %>
+	      <li><%= link_to "Sign out", logout_path, id: "sign_out" %></li>
+	    <% else %>
+	      <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+	    <% end %>
+          </ul>
+          <ul class="nav">
+            <% Settings.available_locales.each do |locale| %>
+              <li><%= link_to I18n.t("language", locale: locale), locale_path(locale: locale) %></li>
+            <% end %>
           </ul>
         </div>
       </div>

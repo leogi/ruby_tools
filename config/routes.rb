@@ -18,7 +18,7 @@ EverydayEnglish::Application.routes.draw do
   resources :users
   get 'auth/:provider/callback', to: 'facebook_auths#create'
   get 'auth/failure', to: redirect('/')
-
+  get 'locale', to: 'application#set_locale'
   resources :stories do
     get :translate, on: :member
   end
