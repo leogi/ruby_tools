@@ -10,7 +10,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def create
-    @resource.new(model_params)
+    @resource = model.new(model_params)
     if @resource.save
       redirect_to redirect_after_create_path
     else
@@ -22,7 +22,6 @@ class Admin::ResourcesController < Admin::BaseController
     respond_with(@resource)
   end
 
-
   def update
     if @resource.update_attributes(model_params)
       redirect_to redirect_after_update_path
@@ -33,7 +32,7 @@ class Admin::ResourcesController < Admin::BaseController
 
   def destroy
     @resource.destroy
-    redirect_to 
+    redirect_to redirect_after_delete_path
   end
 
   def model_name
@@ -45,7 +44,11 @@ class Admin::ResourcesController < Admin::BaseController
   end	
   
   def instance_name
-    controller_name.singularize
+    model_name.tableize.gsub("/", "_").singularize
+  end
+
+  def namespace_controller_name
+    model_name.tableize.gsub("/", "_")
   end
 
   private
@@ -56,8 +59,8 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def load_resource
-  	@resource = model.find(params[:id])
-  	instance_variable_set("@#{instance_name}", @resource)
+    @resource = model.find(params[:id])
+    instance_variable_set("@#{instance_name}", @resource)
   end
 
   def initialize_resource
@@ -70,7 +73,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def resource_index_path
-    send "admin_#{controller_name}_path"
+    send "admin_#{namespace_controller_name}_path"
   end
 
   def resource_edit_path
@@ -86,6 +89,10 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def redirect_after_update_path
+    resource_index_path
+  end
+
+  def redirect_after_delete_path
     resource_index_path
   end
 

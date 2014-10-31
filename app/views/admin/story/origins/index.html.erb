@@ -1,0 +1,22 @@
+<div><%= link_to "New", new_admin_story_origin_path, class: "btn btn-warning" %></div>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= Story.human_attribute_name :title %></th>
+    <th><%= Story.human_attribute_name :content %></th>
+    <th></th>
+  </tr>
+
+  <% @origins.each do |origin| %>
+    <tr>
+      <td><%= origin.title %></td>
+      <td><%= truncate(origin.content, length: 100, separator: "...") %></td>
+      <td>
+	<a class="" href="<%= edit_admin_story_origin_path(origin) %>">
+	  <span class="glyphicon glyphicon-pencil"></span>Edit
+	</a>
+	<%= link_to "Delete", admin_story_origin_path(origin), class: "", method: :delete, data: {confirm: "Do you want delete it?"} %>
+      </td>
+    </tr>
+  <% end %>
+</table>

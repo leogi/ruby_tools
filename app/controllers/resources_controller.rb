@@ -9,7 +9,7 @@ class ResourcesController < BaseController
   end
 
   def model
-  	model_name.constantize
+    model_name.constantize
   end	
   
   def instance_name
@@ -24,8 +24,8 @@ class ResourcesController < BaseController
   end
 
   def load_resource
-  	@resource = model.find(params[:id])
-  	instance_variable_set("@#{instance_name}", @resource)
+    @resource = model.find(params[:id])
+    instance_variable_set("@#{instance_name}", @resource)
   end
 
   def initialize_resource

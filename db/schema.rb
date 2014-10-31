@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720144406) do
+ActiveRecord::Schema.define(version: 20141031015855) do
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "story_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "providers", force: true do |t|
     t.integer  "user_id"
@@ -26,6 +33,16 @@ ActiveRecord::Schema.define(version: 20140720144406) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stories", force: true do |t|
+    t.text     "content"
+    t.string   "language"
+    t.string   "title"
+    t.string   "type"
+    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,6 +65,14 @@ ActiveRecord::Schema.define(version: 20140720144406) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vocabularies", force: true do |t|
+    t.string   "keyword"
+    t.text     "explain"
+    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

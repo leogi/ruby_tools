@@ -21,8 +21,14 @@ EverydayEnglish::Application.routes.draw do
 
 
   namespace :admin do
+    root to: "story/origins#index"
     resources :users
+    namespace :story do
+      resources :origins
+    end
   end
+
+  resources :stories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
