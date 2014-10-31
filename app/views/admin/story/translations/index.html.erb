@@ -1,0 +1,25 @@
+<%= render "btn" %>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= Story.human_attribute_name :language %></th>
+    <th><%= Story.human_attribute_name :title %></th>
+    <th><%= Story.human_attribute_name :content %></th>
+    <th></th>
+  </tr>
+
+  <% @translations.each do |trans| %>
+    <tr>
+      <td><%= trans.language %></td>
+      <td><%= trans.title %></td>
+      <td><%= truncate(trans.content, length: 100, separator: "...") %></td>
+      <td>
+	<a class="" href="<%= edit_admin_story_origin_translation_path(trans.story, trans) %>">
+	  <span class="glyphicon glyphicon-pencil"></span>Edit
+	</a>
+	<%= link_to "Delete", admin_story_origin_translation_path(trans.story, trans), class: "", method: :delete, data: {confirm: "Do you want delete it?"} %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @translations %>

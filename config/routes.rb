@@ -24,7 +24,10 @@ EverydayEnglish::Application.routes.draw do
     root to: "story/origins#index"
     resources :users
     namespace :story do
-      resources :origins
+      resources :origins do 
+        resources :translations
+        resources :vocabularies
+      end
     end
   end
 

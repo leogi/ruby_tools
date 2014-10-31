@@ -2,15 +2,19 @@ class Admin::ResourcesController < Admin::BaseController
   check_authorization
   helper_method :model_name, :model
   before_filter :load_resources, only: [:index]
-  before_filter :load_resource, only: [:edit, :update, :destroy]
-  before_filter :initialize_resource, only: [:new]
+  before_filter :load_resource, only: [:edit, :update, :destroy, :show]
+  before_filter :initialize_resource, only: [:new, :create]
+  before_filter :initialize_for_create, only: [:create]
 
   def new
     respond_with(@resource)
   end
 
+  def show
+  end
+
   def create
-    @resource = model.new(model_params)
+    @resource.assign_attributes(model_params)
     if @resource.save
       redirect_to redirect_after_create_path
     else
@@ -66,6 +70,9 @@ class Admin::ResourcesController < Admin::BaseController
   def initialize_resource
     @resource = model.new
     instance_variable_set("@#{instance_name}", @resource)
+  end
+
+  def initialize_for_create
   end
 
   def paginate_per_page

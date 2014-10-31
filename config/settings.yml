@@ -1,0 +1,3 @@
+languages: ["English", "Vietnamese", "Japanese"]
+resources:
+  per_page: 20

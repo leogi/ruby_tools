@@ -1,9 +1,11 @@
-<div><%= link_to "New", new_admin_story_origin_path, class: "btn btn-warning" %></div>
+<%= render "btn" %>
 
 <table class="table table-striped">
   <tr>
     <th><%= Story.human_attribute_name :title %></th>
     <th><%= Story.human_attribute_name :content %></th>
+    <th><%= Story.human_attribute_name :translations %></th>
+    <th><%= Story.human_attribute_name :vocabularies %></th>
     <th></th>
   </tr>
 
@@ -11,6 +13,8 @@
     <tr>
       <td><%= origin.title %></td>
       <td><%= truncate(origin.content, length: 100, separator: "...") %></td>
+      <td><%= link_to origin.translations.count, admin_story_origin_translations_path(origin) %></td>
+      <td><%= link_to origin.vocabularies.count, admin_story_origin_vocabularies_path(origin) %></td>
       <td>
 	<a class="" href="<%= edit_admin_story_origin_path(origin) %>">
 	  <span class="glyphicon glyphicon-pencil"></span>Edit
@@ -20,3 +24,5 @@
     </tr>
   <% end %>
 </table>
+
+<%= paginate @origins %>
