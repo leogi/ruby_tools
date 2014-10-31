@@ -13,6 +13,7 @@ class Admin::Story::TranslationsController < Admin::ResourcesController
   private
   def initialize_for_create
     @resource.story = @origin
+    instance_variable_set("@#{instance_name}", @resource)
   end
 
   def load_story_origin

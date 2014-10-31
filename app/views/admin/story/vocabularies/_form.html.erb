@@ -1,10 +1,8 @@
-<%= form_for [:admin, @origin, @vocabulary] do |f| %>
-  <% if @vocabulary.errors.any? %>
+<%= form_for [:admin, @origin, @resource] do |f| %>
+  <% if @resource.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@vocabulary.errors.count, "error") %> prohibited this diary from being saved:</h2>
-
       <ul>
-      <% @vocabulary.errors.full_messages.each do |msg| %>
+      <% @resource.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

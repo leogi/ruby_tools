@@ -13,12 +13,15 @@ EverydayEnglish::Application.routes.draw do
     put '/password/change' => 'devise/passwords#update', :as => :update_password
   end
 
-  root "homes#index"
+  root "stories#index"
 
   resources :users
   get 'auth/:provider/callback', to: 'facebook_auths#create'
   get 'auth/failure', to: redirect('/')
 
+  resources :stories do
+    get :translate, on: :member
+  end
 
   namespace :admin do
     root to: "story/origins#index"
@@ -31,7 +34,6 @@ EverydayEnglish::Application.routes.draw do
     end
   end
 
-  resources :stories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

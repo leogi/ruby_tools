@@ -1,0 +1,42 @@
+<% if @current_story %>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default"><%= @current_story.title %></button>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <% @stories.each do |story| %>
+      <li class="<%= story.id == @current_story.id ? 'active' : '' %>"><%= link_to story.title, stories_path(story: story.id) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="story-content">
+  <h2><%= @current_story.title %></h2>
+  <div class="alert alert-success" role="alert">
+    <p><%= simple_format @current_story.content %></p>
+  </div>
+</div>
+
+<div class="nav-translation">
+  <div class="btn-group">
+    <% @translate_languages.each do |language| %>
+      <%= link_to language, translate_story_path(@current_story, language: language), remote: :true, class: "btn btn-default alert alert-info" %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<div id="translations">
+</div>
+<div id="vocabularies">
+  <h3 class="alert alert-danger">Vocabularies</h3>
+  <table class="table">
+  <% @current_story.vocabularies.each do |voca| %>
+    <tr class="vocabulary">
+      <td class="alert alert-success"><%= voca.keyword %></td>
+      <td class="alert alert-info"><%= voca.explain %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>

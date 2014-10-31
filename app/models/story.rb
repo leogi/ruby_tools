@@ -6,7 +6,15 @@ class Story < ActiveRecord::Base
   accepts_nested_attributes_for :comments
 
   LANGUAGES = %w(English Vietnamese Japanese)
-  validates :language, inclusion: { within: LANGUAGES }, allow_blank: true
+  validates :language, inclusion: { within: LANGUAGES }, uniqueness: {scope: [:story_id]}
+  validates :title, :content, presence: true
+
+  has_many :locale_stories, class_name: Story.name, foreign_key: :story_id
+  belongs_to :origin, class_name: Story.name, foreign_key: :story_id
+
+  def available_languages
+    self.locale_stories.pluck(:language)
+  end
 
   class << self
     def permit_attributes

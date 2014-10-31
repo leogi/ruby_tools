@@ -2,6 +2,7 @@
 
 <table class="table table-striped">
   <tr>
+    <th><%= Story.human_attribute_name :language %></th>
     <th><%= Story.human_attribute_name :title %></th>
     <th><%= Story.human_attribute_name :content %></th>
     <th><%= Story.human_attribute_name :translations %></th>
@@ -11,6 +12,7 @@
 
   <% @origins.each do |origin| %>
     <tr>
+      <td><%= origin.language %></td>
       <td><%= link_to origin.title, admin_story_origin_path(origin) %></td>
       <td><%= link_to truncate(origin.content, length: 100, separator: "..."), admin_story_origin_path(origin) %></td>
       <td><%= link_to origin.translations.count, admin_story_origin_translations_path(origin) %></td>
