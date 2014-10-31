@@ -2,8 +2,14 @@ class Admin::BaseController < ApplicationController
   authorize_resource
   respond_to :html, :js, :json
 
-  # before_filter :authenticate
+  before_filter :check_admin_role
+
   private
+  def check_admin_role
+    unless current_user && current_user.admin?
+      redirect_to root_path, notice: "Access denied"
+    end
+  end
   # def authenticate
   #  authenticate_or_request_with_http_basic('Administration') do |username, password|
   #    md5_of_password = Digest::MD5.hexdigest(password)

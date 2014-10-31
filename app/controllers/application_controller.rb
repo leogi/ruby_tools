@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] ? params[:locale].to_sym : I18n.default_locale
     redirect_to root_path
   end
+
+  rescue_from CanCan::AccessDenied do |exception|  
+    flash[:error] = "Access denied!"  
+    redirect_to root_url  
+  end  
 end
