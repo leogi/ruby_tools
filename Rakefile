@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Mood::Application.load_tasks
+EverydayEnglish::Application.load_tasks

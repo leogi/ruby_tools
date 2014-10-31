@@ -17,7 +17,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: mood_development
+  database: everyday_english_development
   pool: 5
   host: localhost
   username: root
@@ -47,7 +47,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: mood_test
+  database: everyday_english_test
   pool: 5
   username: root
   password:
@@ -55,7 +55,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: smood_production
+  database: everyday_english_production
   pool: 5
   username: root
   password:

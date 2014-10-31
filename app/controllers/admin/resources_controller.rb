@@ -41,7 +41,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def model
-  	model_name.constantize
+    model_name.constantize
   end	
   
   def instance_name
