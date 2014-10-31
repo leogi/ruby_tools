@@ -12,7 +12,7 @@ class StoriesController < BaseController
 
   def translate
     @story = Story.find_by_id(params[:id])
-    @translation = @story.origin.translations.where(language: params[:language]).first
+    @translation = @story.origin.locale_stories.where(language: params[:language]).first
     respond_to do |format|
       format.js
     end
