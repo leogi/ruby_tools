@@ -8,4 +8,9 @@ class Admin::Story::OriginsController < Admin::ResourcesController
   def model_name
     ::Story::Origin.name
   end 
+
+  def export
+  	@origins = Story::Origin.all
+  	respond_with(@origins.map { |s| s.to_json })
+  end
 end

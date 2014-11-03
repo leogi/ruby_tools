@@ -28,6 +28,22 @@ class Story < ActiveRecord::Base
     relations.previous(self).last
   end
 
+  def to_json
+    {
+      id: self.id,
+      language: self.language,
+      title: self.title,
+      content: self.content
+    }
+  end
+
+  def story_json
+    to_json.merge!({
+      translations: self.translations.map { |t| t.to_json },
+      vocabularies: self.vocabularies.map { |v| v.to_json }
+    })
+  end
+
   class << self
     def permit_attributes
       [:title, :content, :language]

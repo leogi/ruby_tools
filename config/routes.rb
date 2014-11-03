@@ -29,6 +29,7 @@ EverydayEnglish::Application.routes.draw do
     resources :users
     namespace :story do
       resources :origins do 
+        get :export, on: :collection
         resources :translations
         resources :vocabularies
       end

@@ -1,6 +1,6 @@
 class Admin::BaseController < ApplicationController
   authorize_resource
-  respond_to :html, :js, :json
+  respond_to :html, :js, :json, :csv
 
   before_filter :check_admin_role
 
