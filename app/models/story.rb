@@ -1,6 +1,6 @@
 class Story < ActiveRecord::Base
-  has_many :vocabularies
-  has_many :comments
+  has_many :vocabularies, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   accepts_nested_attributes_for :vocabularies
   accepts_nested_attributes_for :comments
@@ -12,9 +12,9 @@ class Story < ActiveRecord::Base
   has_many :locale_stories, class_name: Story.name, foreign_key: :story_id
   belongs_to :origin, class_name: Story.name, foreign_key: :story_id
 
-  scope :order_created_at_desc, -> { order("created_at DESC") }
-  scope :next, ->story { order_created_at_desc.where("created_at <= ? AND id <> ?", story.created_at, story.id) }
-  scope :previous, ->story { order_created_at_desc.where("created_at >= ? AND id <> ?", story.created_at, story.id) }
+  scope :order_id_desc, -> { order("id DESC") }
+  scope :next, ->story { order_id_desc.where("id < ?", story.id) }
+  scope :previous, ->story { order_id_desc.where("id > ?", story.id) }
 
   def available_languages
     self.locale_stories.pluck(:language)
@@ -47,6 +47,23 @@ class Story < ActiveRecord::Base
   class << self
     def permit_attributes
       [:title, :content, :language]
+    end
+
+    def create_from_json json
+      ActiveRecord::Base.transaction do
+        story = Story::Origin.create(language: json["language"] || json[:language],
+                                    title: json["title"] || json[:title],
+                                    content: json["content"] || json[:content])
+        
+        (json["translations"] || json[:translations]).each do |trans|
+          story.translations.create(language: trans["language"] || trans[:language], title: trans["title"] || trans[:title],
+                                    content: trans["content"] || trans[:content])
+        end
+        (json["vocabularies"] || json[:vocabularies]).each do |voca|
+          story.vocabularies.create(language: voca["language"] || voca[:language], keyword: voca["keyword"] || voca[:keyword],
+                                    explain: voca["explain"] || voca[:explain])
+        end
+      end
     end
   end
 end

@@ -30,6 +30,7 @@ EverydayEnglish::Application.routes.draw do
     namespace :story do
       resources :origins do 
         get :export, on: :collection
+        post :import, on: :collection
         resources :translations
         resources :vocabularies
       end
