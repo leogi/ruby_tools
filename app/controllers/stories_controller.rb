@@ -2,9 +2,11 @@ class StoriesController < BaseController
   def index
     @stories = Story.where(language: current_locale).order("created_at DESC")
     @current_story = params[:story] ? Story.find_by_id(params[:story]) : @stories.first
-    @next_story = @current_story.next(@stories)
-    @prev_story = @current_story.previous(@stories)
-    @translate_languages = @current_story.origin.available_languages - [@current_story.language]
+    if @current_story
+      @next_story = @current_story.next(@stories)
+      @prev_story = @current_story.previous(@stories)
+      @translate_languages = @current_story.origin.available_languages - [@current_story.language]
+    end
     respond_to do |format|
       format.html
     end

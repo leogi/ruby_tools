@@ -1,7 +1,8 @@
 <tr id="comment-<%= comment.id%>">
   <td class="alert alert-info">
-    <span class="content"><%= comment.content %></span>
+    <p class="content"><%= comment.content %>
     <%= link_to "Delete", story_comment_path(comment.story, comment), method: :delete, confirm: "Do you want to delete it?", remote: true%>
     <%= link_to "Edit", edit_story_comment_path(comment.story, comment), remote: true %>
+    </p>
   </td>
 </tr>

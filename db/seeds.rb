@@ -25,7 +25,7 @@ Vocabulary.delete_all
 Comment.delete_all
 
 story = Story::Origin.create(title: "Teachers'  Day",
-                     content: "One day every year, we celebrate Teachers' Day in honour of the teachers who spend so much time teaching us so many things.
+                            content: "One day every year, we celebrate Teachers' Day in honour of the teachers who spend so much time teaching us so many things.
 This year, Teachers' Day began with a school assembly in the hall where the headmaster delivered a speech. After that we adjourned to our classes, not to have lessons, but to enjoy ourselves.
 
 My classmates gave a small party for the teachers who taught us. Each of us contributed a small sum of money to buy cakes, drinks and other titbits. On that day we arranged the chairs and desks so that they surrounded an empty space in the middle of the classroom.
@@ -36,9 +36,10 @@ The other classes gave parties too. So the teachers had to move from class to cl
 
 One class even gave a short play for their teachers. I did not get to watch it as I was busy tidying up the classroom after the party.
 
-All in all it was a great day. The whole school was immersed in an atmosphere of gaiety. So when the school bell rang for dismissal I felt a little sad that it should end, but end it must. The day was over and we went home tired but happy.")
+All in all it was a great day. The whole school was immersed in an atmosphere of gaiety. So when the school bell rang for dismissal I felt a little sad that it should end, but end it must. The day was over and we went home tired but happy.",
+                            language: "English")
 
-story.translations.create(title: "Teachers'  Day",
+story.translations.create(title: "Teachers'  Day", language: "English",
                           content: "One day every year, we celebrate Teachers' Day in honour of the teachers who spend so much time teaching us so many things.
 This year, Teachers' Day began with a school assembly in the hall where the headmaster delivered a speech. After that we adjourned to our classes, not to have lessons, but to enjoy ourselves.
 
