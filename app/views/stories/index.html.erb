@@ -37,17 +37,6 @@
 <div id="translations">
 </div>
 <div id="vocabularies">
-  <% if @current_story.vocabularies.any? %>
-    <h3 class="alert alert-danger">Vocabularies</h3>
-  <% end %>
-  <table class="table">
-  <% @current_story.vocabularies.each do |voca| %>
-    <tr class="vocabulary">
-      <td class="alert alert-success"><%= voca.keyword %></td>
-      <td class="alert alert-info"><%= voca.explain %></td>
-    </tr>
-  <% end %>
-  </table>
 </div>
 <div id="comments">
   <div id="comments-content">

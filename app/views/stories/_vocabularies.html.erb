@@ -1,0 +1,11 @@
+<% if vocabularies.any? %>
+  <h3 class="alert alert-danger">Vocabularies</h3>
+<% end %>
+<table class="table">
+<% vocabularies.each do |voca| %>
+  <tr class="vocabulary">
+    <td class="alert alert-success"><%= voca.keyword %></td>
+    <td class="alert alert-info"><%= voca.explain %></td>
+  </tr>
+<% end %>
+</table>

@@ -53,6 +53,6 @@ One class even gave a short play for their teachers. I did not get to watch it a
 
 All in all it was a great day. The whole school was immersed in an atmosphere of gaiety. So when the school bell rang for dismissal I felt a little sad that it should end, but end it must. The day was over and we went home tired but happy.")
 
-story.vocabularies.create(keyword: "adjourn to somewhere", explain: "to finish doing something and go somewhere, usually for a drink and some food")
-story.vocabularies.create(keyword: "titbit/tidbit", explain: "a small piece of interesting information, or a small item of pleasant-tasting food")
-story.vocabularies.create(keyword: "immerse", explain: "to become completely involved in something")
+story.vocabularies.create(language: "English", keyword: "adjourn to somewhere", explain: "to finish doing something and go somewhere, usually for a drink and some food")
+story.vocabularies.create(language: "English", keyword: "titbit/tidbit", explain: "a small piece of interesting information, or a small item of pleasant-tasting food")
+story.vocabularies.create(language: "English", keyword: "immerse", explain: "to become completely involved in something")

@@ -2,6 +2,7 @@
 
 <table class="table table-striped">
   <tr>
+    <th><%= Vocabulary.human_attribute_name :language %></th>
     <th><%= Vocabulary.human_attribute_name :keyword %></th>
     <th><%= Vocabulary.human_attribute_name :explain %></th>
     <th></th>
@@ -9,6 +10,7 @@
 
   <% @vocabularies.each do |voca| %>
     <tr>
+      <td><%= voca.language %></td>
       <td><%= link_to voca.keyword, admin_story_origin_vocabulary_path(voca.story, voca) %></td>
       <td><%= link_to truncate(voca.explain, length: 100, separator: "..."), admin_story_origin_vocabulary_path(voca.story, voca) %></td>
       <td>

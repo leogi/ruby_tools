@@ -15,6 +15,7 @@ class StoriesController < BaseController
   def translate
     @story = Story.find_by_id(params[:id])
     @translation = @story.origin.locale_stories.where(language: params[:language]).first
+    @vocabularies = @story.vocabularies.where(language: params[:language])
     respond_to do |format|
       format.js
     end

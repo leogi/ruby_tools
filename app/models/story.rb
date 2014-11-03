@@ -5,7 +5,7 @@ class Story < ActiveRecord::Base
   accepts_nested_attributes_for :vocabularies
   accepts_nested_attributes_for :comments
 
-  LANGUAGES = %w(English Vietnamese Japanese)
+  LANGUAGES = Settings.languages
   validates :language, inclusion: { within: LANGUAGES }, uniqueness: {scope: [:story_id]}
   validates :title, :content, presence: true
 

@@ -10,6 +10,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :language %><br>
+    <%= f.select :language, Settings.languages.map{|l| [l, l]} %>
+  </div>
+
+  <div class="field">
     <%= f.label :keyword %><br>
     <%= f.text_field :keyword %>
   </div>
