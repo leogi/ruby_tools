@@ -21,6 +21,7 @@ EverydayEnglish::Application.routes.draw do
   get 'locale', to: 'application#set_locale'
   resources :stories do
     get :translate, on: :member
+    resources :comments
   end
 
   namespace :admin do

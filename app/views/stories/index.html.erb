@@ -49,3 +49,15 @@
   <% end %>
   </table>
 </div>
+<div id="comments">
+  <div id="comments-content">
+    <table class="table" id="comments-holder">
+      <% @current_story.comments.each do |comment| %>
+        <%= render "comments/comment", comment: comment %>
+      <% end %>
+    </table>
+  </div>
+  <div id="comment-form">
+    <%= render "comments/form", comment: Comment.new, story: @current_story %>
+  </div>
+</div>

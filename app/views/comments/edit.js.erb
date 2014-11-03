@@ -1,0 +1,3 @@
+<% if @resource && @story %>
+  $("#comment-form").html("<%=j render 'comments/form', comment: @resource, story: @story %>");
+<% end %>

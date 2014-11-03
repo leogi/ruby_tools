@@ -1,0 +1,14 @@
+<%= form_for [story, comment], url: comment.new_record? ? story_comments_path(story) : story_comment_path(story, comment), remote: true do |f| %>
+  <%= f.text_area :content, rows: 1, placeholder: "Input your comment!" %>
+  <%#= f.submit "Comment", class: "btn" %>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    $("#comment_content").on("keypress", function(event){
+      if(event.keyCode == 13){
+        $(this).closest("form").submit();
+      }
+    });
+  });
+</script>

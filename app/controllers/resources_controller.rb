@@ -2,7 +2,7 @@ class ResourcesController < BaseController
   helper_method :model_name, :model
   before_filter :load_resources, only: [:index]
   before_filter :load_resource, only: [:edit, :update, :destroy]
-  before_filter :initialize_resource, only: [:new]
+  before_filter :initialize_resource, only: [:new, :create]
 
   def model_name
     controller_name.classify
@@ -35,5 +35,9 @@ class ResourcesController < BaseController
 
   def paginate_per_page
     Settings.resources.per_page
+  end
+  
+  def model_params
+    params.require(instance_name.to_sym).permit(model.permit_attributes)
   end
 end

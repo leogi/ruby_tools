@@ -28,3 +28,15 @@ span {
 .story-content {
   margin-top: 75px;
 }
+
+#comments {
+  float: left;
+  margin-left: 3%;
+  width: 97%;
+}
+
+#comment-form{
+  #comment_content{
+    width: 98%;
+  }
+}
