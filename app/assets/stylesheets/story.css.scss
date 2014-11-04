@@ -1,3 +1,6 @@
+.span9 {
+  overflow: hidden;
+}
 span {
   font-size: 19px;
 }
@@ -14,7 +17,8 @@ span {
 
 .btn-group {
   float: left;
-  margin: 20px; 
+  margin: 5px 0px; 
+  margin-right: 20px;
 }
 
 .stories-nav {
@@ -22,11 +26,12 @@ span {
 }
 
 .pager {
+  margin: 5px 0px;
   float: left;
 }
 
 .story-content {
-  margin-top: 75px;
+  margin-top: 80px;
 }
 
 #comments {

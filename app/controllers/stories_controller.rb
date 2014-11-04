@@ -20,9 +20,4 @@ class StoriesController < BaseController
       format.js
     end
   end
-
-  private
-  def current_locale
-    {en: "English", ja: "Japanese", vn: "Vietnamese"}[I18n.locale]
-  end
 end

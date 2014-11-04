@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   respond_to :html, :json
+  helper_method :current_locale
 
   def set_locale
     I18n.locale = params[:locale] ? params[:locale].to_sym : I18n.default_locale
@@ -12,5 +13,10 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|  
     flash[:error] = "Access denied!"  
     redirect_to root_url  
-  end  
+  end
+  
+  private
+  def current_locale
+    {en: "English", ja: "Japanese", vn: "Vietnamese"}[I18n.locale]
+  end
 end

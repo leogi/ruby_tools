@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Learn foreign language everyday</a>
+        <a class="brand" href="<%= is_admin? ? admin_root_path : root_path %>">Foreign Language</a>
         <div class="nav-collapse">
           <ul class="nav">
  	    <% if current_user %>
@@ -28,11 +28,13 @@
 	      <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
 	    <% end %>
           </ul>
+          <% if !is_admin? %>
           <ul class="nav">
             <% Settings.available_locales.each do |locale| %>
-              <li><%= link_to I18n.t("language", locale: locale), locale_path(locale: locale) %></li>
+              <li class="<%= I18n.locale == locale.to_sym ? 'active' : ''%>"><%= link_to I18n.t("language", locale: locale), locale_path(locale: locale) %></li>
             <% end %>
           </ul>
+          <% end %>
         </div>
       </div>
     </div>
@@ -41,7 +43,6 @@
   <div class="container">
     <div class="row">
       <div class="span9"><%= yield %></div>
-      </div>
     </div>
   </div>
 </body>
