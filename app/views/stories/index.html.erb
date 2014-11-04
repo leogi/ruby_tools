@@ -22,7 +22,8 @@
 <div class="story-content">
   <h2><%= @current_story.title %></h2>
   <div class="alert alert-success" role="alert">
-    <p><%= simple_format @current_story.content %></p>
+    <p><%= simple_format @current_story.content %></p> 
+    <%= social_share_button_tag(@current_story.title, rel: @current_story.title, popup: true, url: stories_url(story: @current_story.id)) %> 
   </div>
 </div>
 
