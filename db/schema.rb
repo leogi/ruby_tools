@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103134947) do
+ActiveRecord::Schema.define(version: 20141104083018) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20141103134947) do
     t.datetime "updated_at"
   end
 
+  add_index "stories", ["language"], name: "index_stories_on_language", using: :btree
+
   create_table "user_roles", force: true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -78,5 +80,7 @@ ActiveRecord::Schema.define(version: 20141103134947) do
     t.datetime "updated_at"
     t.string   "language"
   end
+
+  add_index "vocabularies", ["language"], name: "index_vocabularies_on_language", using: :btree
 
 end

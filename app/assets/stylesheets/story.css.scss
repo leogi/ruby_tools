@@ -5,13 +5,20 @@ span {
   font-size: 19px;
 }
 
+.stories-nav {
+  width: 100%;
+  display: inline-block;
+  padding: 10px 0px;
+}
+
 #translations {
-  width: 97%;
+  //width: 97%;
   float: right;
+  border-top: 1px solid rgb(208, 208, 208);
 }
 
 #vocabularies {
-  width: 97%;
+  //width: 97%;
   float: right;
 }
 
@@ -31,7 +38,8 @@ span {
 }
 
 .story-content {
-  margin-top: 80px;
+  //margin-top: 80px;
+  border-top: 1px solid rgb(208, 208, 208);
 }
 
 #comments {
