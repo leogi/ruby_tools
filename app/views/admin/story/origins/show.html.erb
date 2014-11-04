@@ -1,5 +1,11 @@
+<%= render "btn" %>
+
 <h2><%= @origin.title %></h2>
 <p><%= simple_format @origin.content %></p>
 
+<% @origin.translations.each do |trans| %>
+  <%= render "translation", translation: trans %>
+<% end %>
 
-<%= render "btn" %>
+<%= render "vocabularies", vocabularies: @origin.vocabularies %>
+

@@ -13,8 +13,8 @@ class Story < ActiveRecord::Base
   belongs_to :origin, class_name: Story.name, foreign_key: :story_id
 
   scope :order_id_desc, -> { order("id DESC") }
-  scope :next, ->story { order_id_desc.where("id < ?", story.id) }
-  scope :previous, ->story { order_id_desc.where("id > ?", story.id) }
+  scope :next, ->story { where("id > ?", story.id) }
+  scope :previous, ->story { where("id < ?", story.id) }
 
   def available_languages
     self.locale_stories.pluck(:language)

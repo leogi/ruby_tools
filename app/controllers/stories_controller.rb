@@ -1,6 +1,6 @@
 class StoriesController < BaseController
   def index
-    @stories = Story.where(language: current_locale).order_id_desc
+    @stories = Story.where(language: current_locale)
     @current_story = params[:story] ? Story.find_by_id(params[:story]) : @stories.first
     if @current_story
       @next_story = @current_story.next(@stories)
