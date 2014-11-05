@@ -15,6 +15,9 @@ EverydayEnglish::Application.routes.draw do
 
   root "stories#index"
 
+  get "about", to: "statics#about"
+  get "contact", to: "statics#contact"
+
   resources :users
   get 'auth/:provider/callback', to: 'facebook_auths#create'
   get 'auth/failure', to: redirect('/')
