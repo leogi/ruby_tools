@@ -51,6 +51,7 @@ gem 'cancancan'
 gem 'order_query'
 gem 'social-share-button'
 gem 'state_machine'
+gem 'activerecord-session_store'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

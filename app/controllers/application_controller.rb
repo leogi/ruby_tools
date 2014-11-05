@@ -4,9 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   respond_to :html, :json
   helper_method :current_locale
+  before_filter :user_locale
 
   def set_locale
     I18n.locale = params[:locale] ? params[:locale].to_sym : I18n.default_locale
+    session[:locale] = I18n.locale
     redirect_to root_path
   end
 
@@ -18,5 +20,9 @@ class ApplicationController < ActionController::Base
   private
   def current_locale
     {en: "English", ja: "Japanese", vn: "Vietnamese"}[I18n.locale]
+  end
+
+  def user_locale
+    I18n.locale = session[:locale] || I18n.default_locale
   end
 end
