@@ -15,7 +15,7 @@ class Story < ActiveRecord::Base
   scope :order_id_desc, -> { order("id DESC") }
   scope :next, ->story { where("id > ?", story.id) }
   scope :previous, ->story { where("id < ?", story.id) }
-
+  scope :published, -> { where(state: "published") }
   state_machine initial: :preview do
     event :publish! do
       transition preview: :published
@@ -29,7 +29,7 @@ class Story < ActiveRecord::Base
   end
 
   def available_languages
-    self.locale_stories.pluck(:language)
+    self.locale_stories.published.pluck(:language)
   end
 
   def next relations

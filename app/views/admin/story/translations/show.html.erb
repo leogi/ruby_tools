@@ -1,4 +1,6 @@
-<h2><%= @translation.title %><span class="label label-default"><%= @translation.language %></span></h2>
+<h2><%= @translation.title %><span class="label label-default"><%= @translation.language %></span>
+  <span class="label label-warning state-<%= @origin.id%>"><%= @origin.state %></span>
+</h2>
 <p><%= simple_format @translation.content %></p>
 
 <%= render "btn" %>

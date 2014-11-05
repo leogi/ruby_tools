@@ -1,6 +1,6 @@
 <%= render "btn" %>
 
-<h2><%= @origin.title %></h2>
+<h2><%= @origin.title %><span class="label label-warning state-<%= @origin.id%>"><%= @origin.state %></span></h2>
 <p><%= simple_format @origin.content %></p>
 
 <% @origin.translations.each do |trans| %>

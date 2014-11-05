@@ -16,6 +16,9 @@
     <div><%= link_to "Add vocabulary", new_admin_story_origin_vocabulary_path(@origin), class: "btn btn-warning" if action_name == "show" %>
     </div>
   </div>
+  <div class="btn-group">
+    <%= render "admin/stories/state_change", story: @origin if action_name == "show" %>
+  </div>
 </div>
 <div class="btn-toolbar" role="toolbar" style="overflow:hidden">
   <div class="btn-group" style="float:right">
