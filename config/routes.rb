@@ -30,6 +30,10 @@ EverydayEnglish::Application.routes.draw do
   namespace :admin do
     root to: "story/origins#index"
     resources :users
+    resources :stories, only: [] do
+      get :publish, on: :member
+      get :unpublish, on: :member
+    end
     namespace :story do
       resources :origins do 
         get :export, on: :collection

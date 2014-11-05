@@ -4,6 +4,7 @@ class Admin::Story::TranslationsController < Admin::ResourcesController
   load_and_authorize_resource :class => ::Story::Translation.name, except: [:create]
   check_authorization
   prepend_before_filter :load_story_origin
+  before_filter :initialize_event, only: [:create, :update]
 
   # Override TODO refactoring
   def model_name
@@ -41,5 +42,11 @@ class Admin::Story::TranslationsController < Admin::ResourcesController
 
   def resource_new_path
     new_admin_story_translation_path(@origin)
+  end
+
+  def initialize_event
+    if ["published", "preview"].include? params[:commit]
+      @resource.state = params[:commit]
+    end
   end
 end

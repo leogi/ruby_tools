@@ -50,6 +50,7 @@ gem 'kaminari'
 gem 'cancancan'
 gem 'order_query'
 gem 'social-share-button'
+gem 'state_machine'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

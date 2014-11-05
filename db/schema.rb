@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104083018) do
+ActiveRecord::Schema.define(version: 20141105082735) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141104083018) do
     t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   add_index "stories", ["language"], name: "index_stories_on_language", using: :btree

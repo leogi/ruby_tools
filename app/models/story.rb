@@ -16,6 +16,18 @@ class Story < ActiveRecord::Base
   scope :next, ->story { where("id > ?", story.id) }
   scope :previous, ->story { where("id < ?", story.id) }
 
+  state_machine initial: :preview do
+    event :publish! do
+      transition preview: :published
+    end
+
+    event :unpublish! do
+      transition published: :preview
+    end
+    state :preview
+    state :published
+  end
+
   def available_languages
     self.locale_stories.pluck(:language)
   end
@@ -53,11 +65,12 @@ class Story < ActiveRecord::Base
       ActiveRecord::Base.transaction do
         story = Story::Origin.create(language: json["language"] || json[:language],
                                     title: json["title"] || json[:title],
-                                    content: json["content"] || json[:content])
-        
+                                    content: json["content"] || json[:content],
+                                     state: "published")
+
         (json["translations"] || json[:translations]).each do |trans|
           story.translations.create(language: trans["language"] || trans[:language], title: trans["title"] || trans[:title],
-                                    content: trans["content"] || trans[:content])
+                                    content: trans["content"] || trans[:content], state: "published")
         end
         (json["vocabularies"] || json[:vocabularies]).each do |voca|
           story.vocabularies.create(language: voca["language"] || voca[:language], keyword: voca["keyword"] || voca[:keyword],
