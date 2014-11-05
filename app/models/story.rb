@@ -16,6 +16,7 @@ class Story < ActiveRecord::Base
   scope :next, ->story { where("id > ?", story.id) }
   scope :previous, ->story { where("id < ?", story.id) }
   scope :published, -> { where(state: "published") }
+  scope :preview, -> { where(state: "preview") }
   state_machine initial: :preview do
     event :publish! do
       transition preview: :published
