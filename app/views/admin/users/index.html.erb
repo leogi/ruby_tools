@@ -1,1 +1,37 @@
-INDEX
+<%= render "search_form" %>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= User.human_attribute_name :email %></th>
+    <th><%= User.human_attribute_name :language %></th>
+    <th><%= Story.human_attribute_name :providers %></th>
+    <th><%= Story.human_attribute_name :roles %></th>
+    <th></th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.email, admin_user_path(user) %></td>
+      <td><%= user.language %></td>
+      <td>
+	<% user.providers.each do |p| %>
+	  <span class="label label-warning"><%= p.provider %></span>
+	<% end %>
+      </td>
+      <td>
+	<% user.roles.each do |r| %>
+	  <span class="label label-warning"><%= r.name %></span>
+	<% end %>
+      </td>
+      <td>
+	<a class="" href="<%= edit_admin_user_path(user) %>">
+	  <span class="glyphicon glyphicon-pencil"></span>Edit
+	</a>
+	<%= link_to "Delete", admin_user_path(user), class: "", method: :delete, data: {confirm: "Do you want delete it?"} %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @users %>
+

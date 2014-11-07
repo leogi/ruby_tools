@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :providers
 
+  after_create :initialize_default_roles
+
   def admin?
     roles.map(&:name).include?("admin")
   end
@@ -20,23 +22,31 @@ class User < ActiveRecord::Base
     false
   end
 
+  private
+  def initialize_default_roles
+    if !self.roles.any?
+      self.roles << Role.where(name: "user").first
+      self.save
+    end
+  end
+
   class << self
-  	def from_omniauth(auth)
-  	  attrs = { provider: auth.provider, uid: auth.uid,
-          		oauth_token: auth.credentials.token,
-          		oauth_expires_at: Time.at(auth.credentials.expires_at) }
-
-  	  provider = Provider.where(auth.slice(:provider, :uid)).first
-  	  user = provider.try(:user)
-  	  if user
-  	  	provider.update_attributes(attrs)
-  	  else
-  	  	user = User.create(providers_attributes: [attrs])
-  	  end
-
-  	  user.reload
-  	end
-
+    def from_omniauth(auth)
+      attrs = { provider: auth.provider, uid: auth.uid,
+        oauth_token: auth.credentials.token,
+        oauth_expires_at: Time.at(auth.credentials.expires_at) }
+      
+      provider = Provider.where(auth.slice(:provider, :uid)).first
+      user = provider.try(:user)
+      if user
+        provider.update_attributes(attrs)
+      else
+        user = User.create(providers_attributes: [attrs])
+      end
+      
+      user.reload
+    end
+    
     def permit_attributes
       [:email, :password, :password_confirmation]
     end

@@ -42,6 +42,7 @@
 
   <div id="container" class="container">
     <div class="row">
+      <%= render "admin/shares/top_nav" if is_admin? %>
       <div class="span9"><%= yield %></div>
     </div>
   </div>
