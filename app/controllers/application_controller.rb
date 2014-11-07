@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] ? params[:locale].to_sym : I18n.default_locale
     session[:locale] = I18n.locale
+    current_user.update_attributes(language: I18n.locale.to_s) if current_user
     redirect_to root_path
   end
 
@@ -23,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_locale
-    I18n.locale = session[:locale] || I18n.default_locale
+    I18n.locale = (current_user ? current_user.language.to_sym : nil) || session[:locale] || I18n.default_locale
   end
 end
