@@ -9,6 +9,11 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:site_name" content="Foreign language everyday">
+  <meta property="og:title" content="<%= @current_story.title if @current_story %>">
+  <meta property="og:description" content="<%= truncate(@current_story.content, length: 100) if @current_story %>">
+  <meta property="og:app_id" content="<%= Settings.facebook.key %>">
+
 </head>
 <body>
   <div class="navbar navbar-fixed-top">

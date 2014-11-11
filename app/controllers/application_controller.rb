@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  include BaseRedirect
+
   protect_from_forgery with: :exception
   respond_to :html, :json
   helper_method :current_locale
+  helper_method :is_admin?
   before_filter :user_locale
 
   def set_locale
@@ -25,5 +28,13 @@ class ApplicationController < ActionController::Base
 
   def user_locale
     I18n.locale = (current_user ? current_user.language.to_sym : nil) || session[:locale] || I18n.default_locale
+  end
+
+  def is_admin?
+    self.is_a? Admin::BaseController
+  end
+
+  def root
+    is_admin? ? admin_root_path : root_path
   end
 end

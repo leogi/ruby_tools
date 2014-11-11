@@ -1,0 +1,16 @@
+<%= form_for :algorithm, url: algorithms_path, remote: true do |f| %>
+  <div class="field">
+    <%= f.select :type, algorithms.keys.map{|k| [k, k]} %>
+  </div>
+  <div class="field">
+    <%= f.text_area :content, style: "width:400px;height:200px" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :decrypt %> Decrypt
+  </div>
+  <div class="field">
+    <%= f.submit :analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
+  </div>
+<% end %>
+<div id="results">
+</div>
