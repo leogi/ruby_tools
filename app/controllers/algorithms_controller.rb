@@ -12,7 +12,9 @@ class AlgorithmsController < BaseController
     @content = model_params[:content]
     @type = model_params[:type].to_sym
     send(@type)
-   
+    @results = @results.force_encoding("utf-8").
+      encode('UTF-8', :invalid => :replace, :replace => '?')
+
     respond_to do |format|
       format.js
     end    

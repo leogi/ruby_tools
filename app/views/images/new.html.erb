@@ -1,0 +1,13 @@
+<%= form_for :image, url: images_path, html: {role: "form"} do |f| %>
+  <div class="field form-group">
+    <%= f.label :file %>
+    <%= f.file_field :file, accept: "image/png,image/gif,image/jpeg" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.submit :analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
+  </div>
+<% end %>
+<div id="results">
+  <textarea style="width:800px;height:500px"><%= @base64 if defined? @base64 %></textarea>
+</div>

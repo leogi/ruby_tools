@@ -27,8 +27,12 @@ RubyTools::Application.routes.draw do
 =end
 
   root "algorithms#index"
-
+  
   resources :algorithms, only: [:index, :new, :create]
+  resources :images, only: [:new, :create] do
+    get :base64_to_image, on: :collection
+    post :create_base64_to_image, on: :collection
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
