@@ -15,4 +15,4 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require social-share-button
-//= require_tree .
+// require_tree .

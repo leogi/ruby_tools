@@ -1,6 +1,9 @@
 class AlgorithmsController < BaseController
   helper_method :algorithms
 
+  def index
+  end
+
   def new
   end
 
