@@ -1,4 +1,5 @@
-EverydayEnglish::Application.routes.draw do
+RubyTools::Application.routes.draw do
+=begin
   devise_for :users
 
   devise_scope :user do
@@ -13,37 +14,21 @@ EverydayEnglish::Application.routes.draw do
     put '/password/change' => 'devise/passwords#update', :as => :update_password
   end
 
-  root "stories#index"
-
   get "about", to: "statics#about"
   get "contact", to: "statics#contact"
 
   resources :users
   get 'auth/:provider/callback', to: 'facebook_auths#create'
   get 'auth/failure', to: redirect('/')
-  get 'locale', to: 'application#set_locale'
-  resources :stories do
-    get :translate, on: :member
-    resources :comments
-  end
 
   namespace :admin do
-    root to: "story/origins#index"
     resources :users
-    resources :stories, only: [] do
-      get :publish, on: :member
-      get :unpublish, on: :member
-    end
-    namespace :story do
-      resources :origins do 
-        get :export, on: :collection
-        post :import, on: :collection
-        resources :translations
-        resources :vocabularies
-      end
-    end
   end
+=end
 
+  root "algorithms#index"
+
+  resources :algorithms, only: [:index, :new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

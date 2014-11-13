@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json
   helper_method :current_locale
   helper_method :is_admin?
-  before_filter :user_locale
 
   def set_locale
     I18n.locale = params[:locale] ? params[:locale].to_sym : I18n.default_locale
@@ -24,10 +23,6 @@ class ApplicationController < ActionController::Base
   private
   def current_locale
     {en: "English", ja: "Japanese", vn: "Vietnamese"}[I18n.locale]
-  end
-
-  def user_locale
-    I18n.locale = (current_user ? current_user.language.to_sym : nil) || session[:locale] || I18n.default_locale
   end
 
   def is_admin?

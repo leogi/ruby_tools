@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EverydayEnglish::Application.load_tasks
+RubyTools::Application.load_tasks

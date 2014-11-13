@@ -1,4 +1,0 @@
-<% if @resource %>
-  $("#comment-<%= @resource.id%> .content").html("<%= @resource.content %>");
-  $("#comment-form").html("<%=j render "comments/form", comment: Comment.new, story: @story %>");
-<% end %>

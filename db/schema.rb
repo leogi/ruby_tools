@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107022947) do
-
-  create_table "comments", force: true do |t|
-    t.text     "content"
-    t.integer  "story_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
+ActiveRecord::Schema.define(version: 20141105103808) do
 
   create_table "providers", force: true do |t|
     t.integer  "user_id"
@@ -48,19 +40,6 @@ ActiveRecord::Schema.define(version: 20141107022947) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
-  create_table "stories", force: true do |t|
-    t.text     "content"
-    t.string   "language"
-    t.string   "title"
-    t.string   "type"
-    t.integer  "story_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "state"
-  end
-
-  add_index "stories", ["language"], name: "index_stories_on_language", using: :btree
-
   create_table "user_roles", force: true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -74,25 +53,13 @@ ActiveRecord::Schema.define(version: 20141107022947) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "language",               default: "en"
   end
-
-  create_table "vocabularies", force: true do |t|
-    t.string   "keyword"
-    t.text     "explain"
-    t.integer  "story_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "language"
-  end
-
-  add_index "vocabularies", ["language"], name: "index_vocabularies_on_language", using: :btree
 
 end

@@ -1,5 +1,0 @@
-<% if !story.published? %>
-  <%= link_to "Publish", publish_admin_story_path(story), class: "btn btn-success", remote: true %>
-<% else %>
-  <%= link_to "Unpublish", unpublish_admin_story_path(story), class: "btn btn-warning", remote: true %>
-<% end %>

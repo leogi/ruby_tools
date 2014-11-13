@@ -17,7 +17,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: everyday_english_development
+  database: ruby_tools_development
   pool: 5
   host: localhost
   username: root
@@ -47,7 +47,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: everyday_english_test
+  database: ruby_tools_test
   pool: 5
   username: root
   password:
@@ -55,7 +55,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: everyday_english_production
+  database: ruby_tools_production
   pool: 5
   username: root
   password:
