@@ -13,7 +13,7 @@ class AlgorithmsController < BaseController
     @type = model_params[:type].to_sym
     send(@type)
     @results = @results.force_encoding("utf-8").
-      encode('UTF-8', :invalid => :replace, :replace => '?')
+      encode('UTF-8', :invalid => :replace, :replace => '?') if @results.is_a? String
 
     respond_to do |format|
       format.js
