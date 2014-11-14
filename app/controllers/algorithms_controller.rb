@@ -11,7 +11,7 @@ class AlgorithmsController < BaseController
     @decrypt = model_params[:decrypt] == "1" ? true : false
     @content = model_params[:content]
     @type = model_params[:type].to_sym
-    send(@type)
+    exec_crypt
     @results = @results.force_encoding("utf-8").
       encode('UTF-8', :invalid => :replace, :replace => '?') if @results.is_a? String
 
@@ -21,7 +21,7 @@ class AlgorithmsController < BaseController
   end
 
   private
-  def rot
+  def caesar_bruteforce
     @results = model.caesar_bruteforce @content, @decrypt    
   end
 
@@ -45,6 +45,15 @@ class AlgorithmsController < BaseController
     @results = model.uuencode(@content, @decrypt)    
   end
 
+  def md5
+    @results = model.md5(@content)
+  end
+
+  # Encrypt/Decrypt
+  def exec_crypt
+    @results = model.send(@type, @content, @decrypt)
+  end
+
   def model_params
     params.require(:algorithm).permit([:content, :decrypt, :type])
   end
@@ -55,12 +64,13 @@ class AlgorithmsController < BaseController
 
   def algorithms
     {
-      rot: "Algorithm::Rot",
+      caesar_bruteforce: "Algorithm::Rot",
       ascii_to_binary: "Algorithm::Convert",
       ascii_to_hex: "Algorithm::Convert",
       hex_to_ascii: "Algorithm::Convert",
       base64: "Algorithm::Convert",
-      uuencode_uudecode: "Algorithm::Convert"
+      uuencode_uudecode: "Algorithm::Convert",
+      md5: "Algorithm::Convert"
     }
   end
 end
