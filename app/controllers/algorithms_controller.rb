@@ -41,6 +41,10 @@ class AlgorithmsController < BaseController
     @results = model.base64(@content, @decrypt)
   end
 
+  def uuencode_uudecode
+    @results = model.uuencode(@content, @decrypt)    
+  end
+
   def model_params
     params.require(:algorithm).permit([:content, :decrypt, :type])
   end
@@ -55,7 +59,8 @@ class AlgorithmsController < BaseController
       ascii_to_binary: "Algorithm::Convert",
       ascii_to_hex: "Algorithm::Convert",
       hex_to_ascii: "Algorithm::Convert",
-      base64: "Algorithm::Convert"
+      base64: "Algorithm::Convert",
+      uuencode_uudecode: "Algorithm::Convert"
     }
   end
 end

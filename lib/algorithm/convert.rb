@@ -25,6 +25,10 @@ module Algorithm
       def base64 text, decrypt = true
         !decrypt ? Base64.encode64(text) : Base64.decode64(text)
       end
+
+      def uuencode text, decrypt = true
+        !decrypt ? [text].pack("u") : text.unpack("u*")
+      end
     end
   end
 end
