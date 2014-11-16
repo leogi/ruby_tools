@@ -1,7 +1,7 @@
 <%= form_for :image, url: create_base64_to_image_images_path, remote: true, html: {role: "form"} do |f| %>
   <div class="field form-group">
     <%= f.label :base64 %>
-    <textarea style="width:800px;height:500px" name="image[base64]" required="required" ><%= @base64 if defined? @base64 %></textarea>
+    <textarea style="width:800px;height:500px" name="image[base64]" ><%= @base64 if defined? @base64 %></textarea>
   </div>
 
   <div class="field form-group">

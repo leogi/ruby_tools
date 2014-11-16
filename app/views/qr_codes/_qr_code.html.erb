@@ -1,0 +1,9 @@
+<div class="matrix">
+  <% qr_code.modules.each_index do |col| %>
+  	<div class="matrix-row">
+  		<% qr_code.modules.each_index do |row| %>
+  			<div class="matrix-cell <%= 'black' if qr_code.dark?(col, row) %>"></div>
+  		<% end %>
+  	</div>
+  <% end %>
+</div>

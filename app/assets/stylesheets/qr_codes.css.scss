@@ -1,0 +1,16 @@
+.matrix {
+	.matrix-row {
+		display: flex;
+	}
+
+	.matrix-cell {
+		float: left;
+		width: 20px;
+		height: 20px;
+	}
+
+	.black {
+		background: black;
+	}
+
+}

@@ -1,0 +1,9 @@
+<div class="matrix">
+  <% matrix.each do |row| %>
+  	<div class="matrix-row">
+  		<% row.each do |cell| %>
+  			<div class="matrix-cell <%= 'black' if cell == true %>"><%= cell if cell.is_a? String %></div>
+  		<% end %>
+  	</div>
+  <% end %>
+</div>

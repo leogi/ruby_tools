@@ -1,7 +1,7 @@
 <%= form_for :image, url: images_path, html: {role: "form"} do |f| %>
   <div class="field form-group">
     <%= f.label :file %>
-    <%= f.file_field :file, accept: "image/png,image/gif,image/jpeg" %>
+    <%= f.file_field :file, accept: "image/png,image/gif,image/jpeg", required: true %>
   </div>
 
   <div class="field form-group">

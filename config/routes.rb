@@ -33,6 +33,9 @@ RubyTools::Application.routes.draw do
     get :base64_to_image, on: :collection
     post :create_base64_to_image, on: :collection
   end
+  resources :qr_codes do
+    post :generate, on: :collection
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

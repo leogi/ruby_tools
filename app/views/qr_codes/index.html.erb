@@ -1,0 +1,21 @@
+<h1>Generate QR Code</h1>
+
+<%= form_for :qr_code, url: generate_qr_codes_path, html: {role: "form"}, remote: true do |f| %>
+  <div class="field form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, required: true %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :size %>
+    <%= f.number_field :size, in: 1..20 %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.submit :generate, class: "btn btn-warning", style: "margin-top: 20px;" %>
+  </div>
+<% end %>
+
+<div id="results">
+  
+</div>

@@ -1,0 +1,27 @@
+<%= link_to "QR Code Generate", qr_codes_path, class: "btn btn-success" %>
+
+<h2>Character Matrix Analysic to detech QR Code</h2>
+<%= form_for :qr_code, url: qr_codes_path, html: {role: "form"}, remote: true do |f| %>
+  <div class="field form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, style: "width:700px;height:300px", value: (@content if defined? @content), required: true %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :separator %>
+    <%= f.select :separator, separators.map{|k, v| ["#{k} (#{v})", k]}, {include_blank: true, value: params[:qr_code].try(:[], "separator")} %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :condition, "Condition: <div class='label label-warning'>object is cell</div>".html_safe %>
+    <%= f.text_area :condition, style: "width:700px;", value: (@condition if defined? @condition) %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.submit :analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
+  </div>
+<% end %>
+
+<div id="results">
+  <%= render "matrix", matrix: @character_matrix if defined? @character_matrix %>
+</div>
