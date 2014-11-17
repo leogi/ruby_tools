@@ -1,0 +1,22 @@
+<h1>Generate Barcode</h1>
+
+<%= form_for :barcode, url: barcodes_path, html: {role: "form"}, remote: true do |f| %>
+  <div class="field form-group">
+    <%= f.label :type %>
+    <%= f.select :type, barcode_types.map{|t| [t.name.split("::").last, t.name]}, required: true %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, required: true, placeholder: "Content" %>
+    <div class="content-error alert alert-danger" style="display:none"></div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.submit :generate, class: "btn btn-warning", style: "margin-top: 20px;" %>
+  </div>
+<% end %>
+
+<div id="results">
+  
+</div>

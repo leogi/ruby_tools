@@ -54,6 +54,7 @@ gem 'state_machine'
 gem 'activerecord-session_store'
 
 gem 'rqrcode-with-patches'
+gem 'barby'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

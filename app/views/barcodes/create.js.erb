@@ -1,0 +1,6 @@
+<% if !@error %>
+  $(".content-error").hide();
+  $("#results").html("<%=j render 'barcodes', barcodes: @barcode_strs if defined? @barcode_strs %>");
+<% else %>
+  $(".content-error").html("Content invalid !!!").show();
+<% end %>

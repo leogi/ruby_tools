@@ -1,0 +1,9 @@
+<div class="matrix">
+  <% barcodes.each do |line| %>
+    <div class="matrix-row">
+      <% line.each do |cell| %>
+        <div class="matrix-cell <%= 'black' if cell %>"></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
