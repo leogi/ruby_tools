@@ -4,7 +4,7 @@
 <%= form_for :qr_code, url: qr_codes_path, html: {role: "form"}, remote: true do |f| %>
   <div class="field form-group">
     <%= f.label :content %>
-    <%= f.text_area :content, style: "width:700px;height:300px", value: (@content if defined? @content), required: true %>
+    <%= f.text_area :content, style: "height:300px", value: (@content if defined? @content), required: true, placeholder: "Character matrix" %>
   </div>
 
   <div class="field form-group">
@@ -14,7 +14,7 @@
 
   <div class="field form-group">
     <%= f.label :condition, "Condition: <div class='label label-warning'>object is cell</div>".html_safe %>
-    <%= f.text_area :condition, style: "width:700px;", value: (@condition if defined? @condition) %>
+    <%= f.text_area :condition, value: (@condition if defined? @condition), placeholder: "Cell condition"%>
   </div>
 
   <div class="field form-group">

@@ -20,3 +20,27 @@ body { padding-top: 60px; }
     margin-right: 10px;
   }
 } 
+
+
+// form
+form {
+  width: 720px;
+  padding: 20px;
+  margin: 20px auto !important;
+  border: 1px solid rgb(206, 255, 206);
+  box-shadow: 0px 1px 10px #E3F4E3;
+  border-radius: 6px;
+
+  select {
+    width: 720px;
+  }
+
+  textarea, input {
+    width: 705px;
+  }
+}
+
+#results {
+  width: 762px;
+  margin: auto;
+}
