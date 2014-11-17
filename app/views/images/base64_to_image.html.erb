@@ -1,3 +1,5 @@
+<h1 class="page-title">Base64 to Image</h1>
+
 <%= form_for :image, url: create_base64_to_image_images_path, remote: true, html: {role: "form"} do |f| %>
   <div class="field form-group">
     <%= f.label :base64 %>
@@ -5,9 +7,9 @@
   </div>
 
   <div class="field form-group">
-    <%= f.submit :analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
+    <%= f.submit :Analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
   </div>
 <% end %>
 <div id="results">
-  <img id="preview" src="data:image/png;base64,<%= @base64 %>"></img>
+  <img id="preview" src=""></img>
 </div>

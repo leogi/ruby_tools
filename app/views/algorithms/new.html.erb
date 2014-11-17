@@ -1,3 +1,5 @@
+<h1 class="page-title">Encoder & Decoder</h1>
+
 <%= form_for :algorithm, url: algorithms_path, remote: true, html: {role: "form"} do |f| %>
   <div class="field form-group">
     <%= f.label :algorithm %>
@@ -11,7 +13,7 @@
     <%= f.check_box :decrypt, class: "form-control" %> Decrypt
   </div>
   <div class="field form-group">
-    <%= f.submit :analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
+    <%= f.submit :Analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
   </div>
 <% end %>
 <div id="results">

@@ -1,4 +1,4 @@
-<h1>Generate Barcode</h1>
+<h1 class="page-title">Generate Barcode</h1>
 
 <%= form_for :barcode, url: barcodes_path, html: {role: "form"}, remote: true do |f| %>
   <div class="field form-group">
@@ -13,7 +13,7 @@
   </div>
 
   <div class="field form-group">
-    <%= f.submit :generate, class: "btn btn-warning", style: "margin-top: 20px;" %>
+    <%= f.submit :Generate, class: "btn btn-warning", style: "margin-top: 20px;" %>
   </div>
 <% end %>
 

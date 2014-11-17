@@ -1,3 +1,4 @@
+<h1 class="page-title">Image to base64</h1>
 <%= form_for :image, url: images_path, html: {role: "form"} do |f| %>
   <div class="field form-group">
     <%= f.label :file %>
@@ -5,7 +6,7 @@
   </div>
 
   <div class="field form-group">
-    <%= f.submit :analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
+    <%= f.submit :Analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
   </div>
 <% end %>
 <div id="results">

@@ -1,6 +1,4 @@
-<%= link_to "QR Code Generate", qr_codes_path, class: "btn btn-success" %>
-
-<h2>Character Matrix Analysic to detect QR Code</h2>
+<h2 class="page-title">Character Matrix Analysic to detect QR Code</h2>
 <%= form_for :qr_code, url: qr_codes_path, html: {role: "form"}, remote: true do |f| %>
   <div class="field form-group">
     <%= f.label :content %>
@@ -18,7 +16,7 @@
   </div>
 
   <div class="field form-group">
-    <%= f.submit :analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
+    <%= f.submit :Analysis, class: "btn btn-warning", style: "margin-top: 20px;" %>
   </div>
 <% end %>
 
