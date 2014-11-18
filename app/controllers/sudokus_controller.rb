@@ -18,7 +18,7 @@ class SudokusController < BaseController
     model_params[:cell].each do |k, v|
       row = []
       v.each do |k, v|
-        row << (v.blank? ? "" : v.to_i)
+        row << (v.blank? ? 0 : v.to_i)
       end
       @matrix << row
     end

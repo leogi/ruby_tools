@@ -60,14 +60,14 @@ module Algorithm
 
     def do_try row, sample
       @missing_cols[row].each_with_index do |col, index|
-        check = check_block?(row, col, sample[index]) && check_col?(col, sample[index])
+        check = valid_block?(row, col, sample[index]) && valid_col?(col, sample[index])
         return false unless check
       end
       update row, sample
       true
     end
 
-    def check_block? row, col, value
+    def valid_block? row, col, value
       block_row, block_col = block_of row, col
       block_row.each do |r|
         block_col.each do |c|
@@ -92,7 +92,7 @@ module Algorithm
       end
     end
 
-    def check_col? col, value
+    def valid_col? col, value
       (0..8).each do |r|
         return false if @result[r][col] == value
       end
@@ -107,7 +107,7 @@ module Algorithm
 
     def rollback row
       @missing_cols[row].each_with_index do |col, index|
-        @result[row][col] = ""
+        @result[row][col] = 0
       end      
     end
 
@@ -119,14 +119,14 @@ module Algorithm
       def missing_cols matrix
         matrix.map do |row|
           cols = []
-          row.each_with_index { |cell, index| cols << index if cell.blank? }
+          row.each_with_index { |cell, index| cols << index if cell == 0 || cell.blank? }
           cols.compact
         end
       end
 
       def missing_values matrix
         sample = (1..9).to_a
-        matrix.map { |row| sample - row.select { |cell| !cell.blank? } }
+        matrix.map { |row| sample - row.select { |cell| cell != 0 && !cell.blank? } }
       end
 
       def dup? array
