@@ -1,0 +1,12 @@
+<div>
+<% matrix.each_with_index do |row, r| %>
+  <div class="field form-group flex <%= 'green-border-bottom' if r == 2 || r == 5 %>">
+    <% row.each_with_index do |cell, c| %>
+      <% class_name = "green-border-left" if c % 3 == 0 %>
+      <% class_name = "green-border-right" if (c + 1) % 3 == 0 %>
+
+      <span class="span-cell <%= class_name %>"><%= cell %></span>
+    <% end %>
+  </div>
+<% end %>
+</div>

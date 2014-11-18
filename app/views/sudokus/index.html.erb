@@ -1,0 +1,20 @@
+<h1 class="page-title">Resolve Sudoku</h1>
+
+<%= form_for :sudoku, url: sudokus_path, html: {role: "form"}, remote: true do |f| %>
+
+  <% (1..9).each do |row| %>
+  <div class="field form-group flex">
+    <% (1..9).each do |col| %>
+      <%= f.text_field "cell[#{row}][#{col}]", class: "input-cell" %>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.submit :Generate, class: "btn btn-warning", style: "margin-top: 20px;" %>
+  </div>
+<% end %>
+
+<div id="results">
+  
+</div>

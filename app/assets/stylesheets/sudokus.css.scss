@@ -1,0 +1,32 @@
+.input-cell {
+  width: 18px;
+  float: left;
+  margin-right: 7px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.span-cell {
+  margin-left: 0;
+  width: 30px;
+  height: 25px;
+  text-align: center;
+  padding-top: 4px;
+  border: 1px solid rgb(214, 214, 214);
+}
+
+.green-border-bottom {
+  border-bottom: 2px solid rgb(85, 204, 153);
+  width: 288px;
+}
+
+.green-border-right {
+  border-right: 1px solid rgb(85, 204, 153);
+}
+
+.green-border-left {
+  border-left: 1px solid rgb(85, 204, 153);
+}
