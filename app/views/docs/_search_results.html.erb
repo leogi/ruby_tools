@@ -1,6 +1,6 @@
 <% results.each_with_index do |result, index| %>
-  <li role="presentation" class="<%= 'event' if index % 2 == 1 %>">
-    <div class="result-item" role="menuitem" onclick="javascript:change_iframe_src('<%= result[:link] %>')">
+  <li role="presentation" class="<%= 'event' if index % 2 == 1 %>" onclick="javascript:change_iframe_src('<%= result[:link] %>')">
+    <div class="result-item" role="menuitem" >
       <%= simple_format result[:content] %>
     </div>
   </li>
