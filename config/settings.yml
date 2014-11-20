@@ -3,3 +3,5 @@ languages: ["English", "Vietnamese", "Japanese"]
 resources:
   per_page: 20
 states: ["preview", "published"]
+search:
+  per_page: 20

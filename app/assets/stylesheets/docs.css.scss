@@ -1,0 +1,33 @@
+.search-results {
+  top: auto;
+  left: auto;
+  width: 718px !important;
+  
+  li {
+    line-height: 20px;
+    padding: 2px 25px;
+    border-bottom: 1px solid rgb(222, 222, 222);
+  }
+  
+  li.event {
+    background: rgb(240, 240, 240);
+  }
+ 
+  li:hover {
+    background: rgb(226, 246, 246);
+  }
+  input {
+    margin-left: 9px;
+  }
+}
+
+.doc-search-form {
+  float: left;
+  width: 100%;
+  padding: 0px;
+  margin: none;
+  border: none;
+  box-shadow: none;
+  border-radius: none;
+  background: none;
+}

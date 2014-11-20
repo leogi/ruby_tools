@@ -1,0 +1,18 @@
+<%= form_for :q, url: docs_path, remote: true, method: :get, html: {class: "doc-search-form"} do |f| %>
+  <%= f.text_field :keyword, {data: {toggle: "dropdown"}, "aria-expanded" => "true", placeholder: "Keyword"} %>
+  <ul id="results" class="dropdown-menu search-results" role="menu" aria-labelledby="q_keyword">
+  </ul>
+<% end %>
+<iframe id="doc-content" src="/ruby/index.html" width="100%" scrolling="no" frameborder="0" onload="javascript:resizeFrame(this);"></iframe>
+
+<script>
+  function resizeFrame(object) {
+    object.style.height = object.contentWindow.document.body.scrollHeight + "px"
+  }
+
+  $(document).ready(function(){
+    $("#q_keyword").on("keyup", function(){
+      $(this).closest("form").submit();
+    });
+  });
+</script>

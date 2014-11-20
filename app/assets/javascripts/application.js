@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require social-share-button
 // require_tree .
+
+function change_iframe_src(link){
+  $("#doc-content").attr("src", link);
+}
