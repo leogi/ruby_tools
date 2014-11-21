@@ -19,4 +19,5 @@
 
 function change_iframe_src(link){
   $("#doc-content").attr("src", link);
+  $("#results").hide();
 }
