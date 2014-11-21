@@ -70,7 +70,8 @@ class AlgorithmsController < BaseController
       hex_to_ascii: "Algorithm::Convert",
       base64: "Algorithm::Convert",
       uuencode_uudecode: "Algorithm::Convert",
-      md5: "Algorithm::Convert"
+      md5: "Algorithm::Convert",
+      html_entities: "Algorithm::Convert"
     }
   end
 end
